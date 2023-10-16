@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 
-
 esxi_host_addr="192.168.0.101"
 esxi_host_user="root"
 esxi_host_pass="Changeme12!@"
