@@ -20,15 +20,19 @@ done
 # cat /Users/moonja/.ssh/known_hosts | grep 192.168.0.101
 
 #
-rh7_hosts="rh7-master rh7-slave rh7-node01 rh7-node02 rh7-node03"
+rh7_hosts="rh7-master rh7-slave rh7-node01 rh7-node02 rh7-node03 rh7-node04"
 co7_hosts="co7-master co7-slave co7-node01 co7-node02 co7-node03"
 rk8_hosts="rk8-master rk8-slave rk8-node01 rk8-node02 rk8-node03"
 rh8_hosts="rh8-master rh8-slave rh8-node01 rh8-node02 rh8-node03"
 rk9_hosts="rk9-master rk9-slave rk9-node01 rk9-node02 rk9-node03"
+rh9_hosts="rh9-master rh9-slave rh9-node01 rh9-node02 rh9-node03"
 ubt18_hosts="ubt18-master ubt18-slave ubt18-node01 ubt18-node02 ubt18-node03"
 ubt22_hosts="ubt22-master ubt22-slave ubt22-node01 ubt22-node02 ubt22-node03"
 harbor_hosts="rk9-harbor"
 minio_hosts="rk9-minio"
+pxe_hosts="rk9-pxe"
+weka4_hosts="weka4-temp weka4-master weka4-slave weka4-node01 weka4-node02 weka4-node03 weka4-node04 weka4-node05"
+ceph_hosts="rk9-ceph-mon01 rk9-ceph-mon02 rk9-ceph-mon03 rk9-ceph-osd01 rk9-ceph-osd02 rk9-ceph-osd03"
 
 #
 function manage_vms() {
@@ -52,7 +56,7 @@ function manage_gw() {
 
 # Echo usage if something isn't right.
 function usage() {
-    echo "Usage: $0 [-c <start|shutdown>] [-g <shutdown|reboot>] [-l <rh7|co7|rk8|rh8|rk9|minio|harbor>]" 1>&2; exit 1;
+    echo "Usage: $0 [-c <start|shutdown>] [-g <shutdown|reboot>] [-l <rh7|co7|rk8|rh8|rk9|rh9|minio|harbor|pxe|weka4>]" 1>&2; exit 1;
 }
 
 #
@@ -82,6 +86,8 @@ while getopts ":c:g:k:" arg; do
                 VMs=$rk8_hosts
             elif  [ "${OS_LIST}" == "rk9" ]; then
                 VMs=$rk9_hosts
+            elif  [ "${OS_LIST}" == "rh9" ]; then
+                VMs=$rh9_hosts
             elif  [ "${OS_LIST}" == "ubt18" ]; then
                 VMs=$ubt18_hosts
             elif  [ "${OS_LIST}" == "ubt22" ]; then
@@ -90,6 +96,12 @@ while getopts ":c:g:k:" arg; do
                 VMs=$minio_hosts
             elif  [ "${OS_LIST}" == "harbor" ]; then
                 VMs=$harbor_hosts
+            elif  [ "${OS_LIST}" == "pxe" ]; then
+                VMs=$pxe_hosts
+            elif  [ "${OS_LIST}" == "weka4" ]; then
+                VMs=$weka4_hosts
+            elif  [ "${OS_LIST}" == "ceph" ]; then
+                VMs=$ceph_hosts
             else
               usage
             fi

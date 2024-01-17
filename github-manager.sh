@@ -43,8 +43,8 @@ function push_github() {
             echo "$BACKUP_DIR/$files_dir exists"
         fi
 
-        find -E $files_dir -regex ".*\.(gz|zip|rpm|deb|gppkg|Z|jar|tgz|mov|ova)" -exec mv -v {} $BACKUP_DIR/$files_dir \;
-        find -E $BACKUP_DIR/$files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|mov|ova)"
+        find -E $files_dir -regex ".*\.(gz|zip|rpm|deb|gppkg|Z|jar|tgz|tar|mov|ova)" -exec mv -v {} $BACKUP_DIR/$files_dir \;
+        find -E $BACKUP_DIR/$files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)"
 
     done
 
@@ -81,8 +81,8 @@ function rollback_files() {
             echo "$ORIGIN_DIR/$files_dir exists"
         fi
 
-        find -E $files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|mov|ova)" -exec mv -v {} $ORIGIN_DIR/$files_dir \;
-        find -E $ORIGIN_DIR/$files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|mov|ova)"
+        find -E $files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)" -exec mv -v {} $ORIGIN_DIR/$files_dir \;
+        find -E $ORIGIN_DIR/$files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)"
 
     done
 
