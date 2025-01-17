@@ -8,7 +8,8 @@
 # Author: Jack Moon, <rokmc756@gmail.com>
 
 
-BASE_DIR=/Users/moonja
+# BASE_DIR=/Users/moonja
+BASE_DIR=/home/jomoon
 BACKUP_DIR=$BASE_DIR/$PROJECT_NAME".backup"
 
 function makedir() {
@@ -43,8 +44,13 @@ function push_github() {
             echo "$BACKUP_DIR/$files_dir exists"
         fi
 
-        find -E $files_dir -regex ".*\.(gz|zip|rpm|deb|gppkg|Z|jar|tgz|tar|mov|ova)" -exec mv -v {} $BACKUP_DIR/$files_dir \;
-        find -E $BACKUP_DIR/$files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)"
+        # On Linux
+        find $files_dir -regextype posix-egrep -regex ".*\.(gz|zip|rpm|deb|gppkg|Z|jar|tgz|tar|mov|ova)" -exec mv -v {} $BACKUP_DIR/$files_dir \;
+        find $BACKUP_DIR/$files_dir -regextype posix-egrep -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)"
+
+        # On Mac
+        # find -E $files_dir -regex ".*\.(gz|zip|rpm|deb|gppkg|Z|jar|tgz|tar|mov|ova)" -exec mv -v {} $BACKUP_DIR/$files_dir \;
+        # find -E $BACKUP_DIR/$files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)"
 
     done
 
@@ -81,8 +87,13 @@ function rollback_files() {
             echo "$ORIGIN_DIR/$files_dir exists"
         fi
 
-        find -E $files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)" -exec mv -v {} $ORIGIN_DIR/$files_dir \;
-        find -E $ORIGIN_DIR/$files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)"
+        # On Linux
+        find $files_dir -regextype posix-egrep -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)" -exec mv -v {} $ORIGIN_DIR/$files_dir \;
+        find $ORIGIN_DIR/$files_dir -regextype posix-egrep -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)"
+
+        # On Mac
+        # find -E $files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)" -exec mv -v {} $ORIGIN_DIR/$files_dir \;
+        # find -E $ORIGIN_DIR/$files_dir -regex ".*\.(gz|zip|deb|rpm|gppkg|Z|jar|tgz|tar|mov|ova)"
 
     done
 
@@ -136,3 +147,4 @@ case "$ACTION" in
         usage
         ;;
 esac
+

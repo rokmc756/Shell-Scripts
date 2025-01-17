@@ -14,8 +14,8 @@ do
     
     # sshpass -p "Changeme12!@" ssh -o StrictHostKeyChecking=no root@$i "poweroff; halt"
     # sshpass -p "Changeme34#$" ssh -o StrictHostKeyChecking=no root@$i "poweroff; halt"
-    sshpass -p "Changeme34#$" ssh -o StrictHostKeyChecking=no root@192.168.0.231 "poweroff; halt"
     # sshpass -p "Changeme12!@" ssh -o StrictHostKeyChecking=no root@192.168.0.101 "poweroff; halt"
+    sshpass -p "Changeme12!@" ssh -o StrictHostKeyChecking=no root@192.168.0.101 "reboot -f"
+    sshpass -p "Changeme34#$" ssh -o StrictHostKeyChecking=no root@192.168.0.231 "reboot -f"
 
 done
-

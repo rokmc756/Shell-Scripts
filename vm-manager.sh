@@ -7,14 +7,18 @@
 # Author: Jack Moon, <rokmc756@gmail.com>
 #
 GW_HOST="192.168.0.101"
+# USER_HOME_DIR="/home/jomoon"
+# USER_HOME_DIR"/Users/moonja"
 
 # sed -ie "$(cat ~/.ssh/known_hosts | grep -n 192.168.0.101 | cut -d : -f 1)d" ~/.ssh/known_hosts
 # for ln in `cat /Users/moonja/.ssh/known_hosts | grep -n 192.168.0.101 | cut -d : -f 1`
 #
-for ln in $(cat /Users/moonja/.ssh/known_hosts | grep -n 192.168.0.101 | cut -d : -f 1)
+
+
+for ln in $(cat /home/jomoon/.ssh/known_hosts | grep -n 192.168.0.101 | cut -d : -f 1)
 do
     echo $ln
-    sed -ie "$ln"d /Users/moonja/.ssh/known_hosts
+    sed -ie "$ln"d /home/jomoon/.ssh/known_hosts
 done
 
 # cat /Users/moonja/.ssh/known_hosts | grep 192.168.0.101
@@ -31,7 +35,8 @@ ubt22_hosts="ubt22-master ubt22-slave ubt22-node01 ubt22-node02 ubt22-node03"
 harbor_hosts="rk9-harbor"
 minio_hosts="rk9-minio"
 pxe_hosts="rk9-pxe"
-weka4_hosts="weka4-temp weka4-master weka4-slave weka4-node01 weka4-node02 weka4-node03 weka4-node04 weka4-node05"
+# weka4_hosts="weka4-temp weka4-master weka4-slave weka4-node01 weka4-node02 weka4-node03 weka4-node04 weka4-node05"
+weka4_hosts="weka4-node01 weka4-node02 weka4-node03 weka4-node04 weka4-node05"
 ceph_hosts="rk9-ceph-mon01 rk9-ceph-mon02 rk9-ceph-mon03 rk9-ceph-osd01 rk9-ceph-osd02 rk9-ceph-osd03"
 
 #
