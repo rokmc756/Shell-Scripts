@@ -49,3 +49,4 @@ done
 # chmod 755 /home/gpadmin/send_alert_catalog_corrupted.sh
 # crontab -e
 # 30 0 * * * /home/gpadmin/send_alert_catalog_corrupted.sh
+

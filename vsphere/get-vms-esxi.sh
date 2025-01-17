@@ -12,3 +12,4 @@ esxi_host_pass="Changeme12!@"
 # vim-cmd vmsvc/power.getstate <vmid>
 
 sshpass -p "$esxi_host_pass" ssh -o StrictHostKeyChecking=no $esxi_host_user@$esxi_host_addr "vim-cmd vmsvc/getallvms | awk '{print \$2}'"
+
